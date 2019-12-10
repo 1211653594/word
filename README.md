@@ -41,7 +41,7 @@
 
 ## 产品原型
 ### 首页
-![首页](https://gitee.com/NFUNM076/word/blob/master/%E5%9B%BE%E7%89%87/%E9%A6%96%E9%A1%B5.png)
+![首页](/picture/首页.png)
 ### 文本纠错
 ![文本纠错](/picture/文本纠错.png)
 ### 文本审核
