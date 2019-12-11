@@ -52,7 +52,14 @@
 ## 产品结构图
 ### 产品功能结构图
 ![产品功能](/picture/产品功能.png)
-### 产品信息结构图
 
 ## API的运用
-
+### 文本审核
+- 调用方式一：
+1.向API服务地址使用POST发送请求，必须在URL中带上参数。
+2.access_token: 必须参数，参考“Access Token获取。
+3.POST中参数按照API接口说明调用即可。
+4.例如自然语言处理API，使用HTTPS POST发送：
+```
+https://aip.baidubce.com/rpc/2.0/nlp/v1/lexer?access_token=24.f9ba9c5241b67688bb4adbed8bc91dec.2592000.1485570332.282335-8574074
+```
