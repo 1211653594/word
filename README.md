@@ -56,7 +56,7 @@
 ## API的运用
 ### 文本审核
 - 调用方法：向API服务地址使用POST发送请求，必须在URL中带上参数；access_token: 必须参数，参考“Access Token获取；POST中参数按照API接口说明调用即可；例如自然语言处理API，使用HTTPS POST发送：
-- 注意：
+- 注意：如有疑问，进入AI社区交流：http://ai.baidu.com/forum/topic/list/172。
 - 请求方式：POST。
 - 请求URL：https://aip.baidubce.com/rest/2.0/solution/v1/text_censor/v2/user_defined 
 - 使用示例：
@@ -64,7 +64,7 @@
 https://aip.baidubce.com/rpc/2.0/nlp/v1/lexer?access_token=24.f9ba9c5241b67688bb4adbed8bc91dec.2592000.1485570332.282335-8574074
 ```
 ![输入例子](/picture/输入1.png)
-- 返回示例：
+- 返回示例：<br></br>
 ![返回示例](/picture/输出2.png)
 - 成功响应示例 ——合规：
 ```
@@ -166,3 +166,32 @@ https://aip.baidubce.com/rpc/2.0/nlp/v1/lexer?access_token=24.f9ba9c5241b67688bb
 ```
 
 ### 文本纠错
+- 调用方法：通过API Key和Secret Key获取的access_token。
+- 注意：GBK支持：默认按GBK进行编码，输入内容为GBK编码，输出内容为GBK编码，否则会接口报错编码错误；UTF-8支持：若文本需要使用UTF-8编码，请在url参数中添加charset=UTF-8 （大小写敏感）。
+- 请求方式：POST。
+- 请求URL：https://aip.baidubce.com/rpc/2.0/nlp/v1/ecnet
+- 使用示例：
+```
+{
+    "text": "百度是一家人工只能公司"
+}
+```
+- 返回示例：
+```
+{
+    "log_id": 6770395607901559829,
+    "item": {
+        "vec_fragment": [
+            {
+                "ori_frag": "只能",
+                "begin_pos": 21,
+                "correct_frag": "智能",
+                "end_pos": 27
+            }
+        ],
+        "score": 0.875169,
+        "correct_query": "百度是一家人工智能公司"
+    },
+    "text": "百度是一家人工只能公司"
+}
+```
