@@ -176,6 +176,7 @@ https://aip.baidubce.com/rpc/2.0/nlp/v1/lexer?access_token=24.f9ba9c5241b67688bb
     "text": "百度是一家人工只能公司"
 }
 ```
+![示例](/picture/输入3.png)
 - 返回示例：
 ```
 {
@@ -195,3 +196,4 @@ https://aip.baidubce.com/rpc/2.0/nlp/v1/lexer?access_token=24.f9ba9c5241b67688bb
     "text": "百度是一家人工只能公司"
 }
 ```
+![示例](/picture/输出4.png)
