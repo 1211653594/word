@@ -198,3 +198,5 @@ https://aip.baidubce.com/rpc/2.0/nlp/v1/lexer?access_token=24.f9ba9c5241b67688bb
 ```
 ![示例](/picture/输出4.png)
 
+## 使用比较分析
+- 如我上述所说的那样，因为国内环境与国外环境不一样，因此两个功能都只考虑使用国内的开放平台的API。出于前瞻性和影响力度的考量，本APP最终选择百度AI开放平台下的两个API。
