@@ -55,11 +55,114 @@
 
 ## API的运用
 ### 文本审核
-- 调用方式一：
-1.向API服务地址使用POST发送请求，必须在URL中带上参数。
-2.access_token: 必须参数，参考“Access Token获取。
-3.POST中参数按照API接口说明调用即可。
-4.例如自然语言处理API，使用HTTPS POST发送：
+- 调用方法：向API服务地址使用POST发送请求，必须在URL中带上参数；access_token: 必须参数，参考“Access Token获取；POST中参数按照API接口说明调用即可；例如自然语言处理API，使用HTTPS POST发送：
+- 注意：
+- 请求方式：POST。
+- 请求URL：https://aip.baidubce.com/rest/2.0/solution/v1/text_censor/v2/user_defined 
+- 使用示例：
 ```
 https://aip.baidubce.com/rpc/2.0/nlp/v1/lexer?access_token=24.f9ba9c5241b67688bb4adbed8bc91dec.2592000.1485570332.282335-8574074
 ```
+![输入例子](/picture/输入1.png)
+- 返回示例：
+![返回示例](/picture/输出2.png)
+- 成功响应示例 ——合规：
+```
+{
+	"log_id": 15556561295920002,
+	"conclusion": "合规",
+	"conclusionType": 1
+}
+
+或者
+
+{
+    "log_id": 15572142621780024,
+    "conclusion": "合规",
+    "conclusionType": 1,
+    "data": [{
+        "type": 14,
+        "subType": 0,
+        "conclusion": "合规",
+        "conclusionType": 1,
+        "msg": "自定义文本白名单审核通过",
+        "hits": [{
+            "datasetName": "SLK-测试-自定义文本白名单",
+            "words": ["习大大"]
+        }]
+    }]
+}
+```
+- 成功响应示例——不合规：
+```
+{
+    "log_id": 123456789,
+    "conclusion": "不合规",
+    "conclusionType": 2,
+    "data": [{
+        "type": 11,
+        "subType": 0,
+        "conclusion": "不合规",
+        "conclusionType": 2,
+        "msg": "存在百度官方默认违禁词库不合规",
+        "hits": [{
+            "datasetName": "百度默认黑词库",
+            "words": ["免费翻墙"]
+        }]
+    }, {
+        "type": 12,
+        "subType": 2,
+        "conclusion": "不合规",
+        "conclusionType": 2,
+        "msg": "存在文本色情不合规",
+        "hits": [{
+            "datasetName": "百度默认文本反作弊库",
+            "probability": 1.0,
+            "words": ["电话 找小姐"]
+        }]
+    }, {
+        "type": 12,
+        "subType": 3,
+        "conclusion": "不合规",
+        "conclusionType": 2,
+        "msg": "存在政治敏感不合规",
+        "hits": [{
+            "probability": 1.0,
+            "datasetName": "百度默认文本反作弊库",
+            "words": ["敏感人物A"]
+        }]
+    }, {
+        "type": 12,
+        "subType": 4,
+        "conclusion": "不合规",
+        "conclusionType": 2,
+        "msg": "存在恶意推广不合规",
+        "hits": [{
+            "probability": 1.0,
+            "datasetName": "百度默认文本反作弊库",
+            "words": [""]
+        }]
+    }, {
+        "type": 13,
+        "subType": 0,
+        "conclusion": "不合规",
+        "conclusionType": 2,
+        "msg": "存在自定义文本黑名单不合规",
+        "hits": [{
+            "datasetName": "SLK-测试-自定义黑名单",
+            "words": ["我是你爹", "他妈的"]
+        }]
+    }]
+}
+```
+
+- 失败响应示例：
+```
+{
+    "log_id": 149319909347709, 
+    "error_code": 0,
+    "error_msg":"configId error"
+}
+```
+
+### 文本纠错
